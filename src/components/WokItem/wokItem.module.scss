@@ -1,0 +1,100 @@
+.wok_item {
+    width: 300px;
+    height: 350px;
+    text-align: center;
+    padding: 40px;
+}
+
+.wok_item_image {
+    width: 100%;
+}
+
+.wok_item_selector {
+    background-color: azure;
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 12px;
+    padding: 2px;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    ul {
+        list-style-type: none;
+        display: flex;
+        gap: 20px;
+    }
+
+    li {
+        width: 100px;
+        height: 25px;
+        cursor: pointer;
+    }
+}
+
+.active_selector {
+    background-color: rgb(7, 59, 42);
+    color: white;
+    border-radius: 12px;
+    padding: 2px;
+    width: 80px;
+}
+
+.wok_item_bottom {
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.wok_item_price {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.add_price {
+    width: 150px;
+    border: 1px solid green;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    // padding: 5px;
+
+    &:hover {
+        cursor: pointer;
+        background-color: red;
+        color: white;
+        transition-delay: 0.2s;
+
+        span {
+            color: white;
+            transition-delay: 0.2s;
+        }
+
+        i {
+            background-color: white;
+            color: red;
+            transition-delay: 0.2s;
+        }
+    }
+
+    i {
+        margin-left: 20px;
+        padding-right: 2px;
+        background: green;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        color: white;
+        font-size: 20px;
+        line-height: 150%;
+    }
+
+    span {
+        font-size: 20px;
+        font-weight: bold;
+        color: green;
+    }
+}

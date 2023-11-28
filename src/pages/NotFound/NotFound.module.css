@@ -1,0 +1,12 @@
+.nf {
+    padding: 100px;
+    text-align: center;
+}
+
+.nf span {
+    font-size: 100px;
+}
+
+.nf p {
+    font-size: 20px;
+}

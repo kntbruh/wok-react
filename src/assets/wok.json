@@ -1,0 +1,112 @@
+[
+    {
+        "id": 0,
+        "imageUrl": "https://static.sushiwok.ru/img/a30268a1aa34182b69848b0f16bd44fe/500x500",
+        "title": "Мини-Wok классический",
+        "types": [
+            0,
+            1
+        ],
+        "sizes": [
+            250
+        ],
+        "price": 250,
+        "category": 0,
+        "rating": 4
+    },
+    {
+        "id": 1,
+        "imageUrl": "https://static.sushiwok.ru/img/4d517fc84d427d591ffe06b1af81dc87/500x500",
+        "title": "Wok Сальса",
+        "types": [
+            0,
+            1
+        ],
+        "sizes": [
+            250,
+            400
+        ],
+        "price": 350,
+        "category": 0,
+        "rating": 6
+    },
+    {
+        "id": 2,
+        "imageUrl": "https://static.sushiwok.ru/img/088d1477e49a3ffd87912daf41e9d598/500x500",
+        "title": "Wok Острый Цыпленок",
+        "types": [
+            0,
+            1
+        ],
+        "sizes": [
+            250,
+            400
+        ],
+        "price": 365,
+        "category": 1,
+        "rating": 4
+    },
+    {
+        "id": 3,
+        "imageUrl": "https://static.sushiwok.ru/img/7343f53e2e28f9299ff0fcfdc9fb819e/500x500",
+        "title": "Мини-Wok сытный",
+        "types": [
+            0,
+            1
+        ],
+        "sizes": [
+            250
+        ],
+        "price": 200,
+        "category": 2,
+        "rating": 2
+    },
+    {
+        "id": 4,
+        "imageUrl": "https://static.sushiwok.ru/img/cbba3965804ffe165af0cee5c492558f/500x500",
+        "title": "Wok с морепродуктами",
+        "types": [
+            0,
+            1
+        ],
+        "sizes": [
+            250,
+            350,
+            450
+        ],
+        "price": 680,
+        "category": 3,
+        "rating": 8
+    },
+    {
+        "id": 5,
+        "imageUrl": "https://static.sushiwok.ru/img/7a135becd4c333f6656bbb677ef69788/500x500",
+        "title": "Фунчоза с цыпленком",
+        "types": [
+            0
+        ],
+        "sizes": [
+            350
+        ],
+        "price": 580,
+        "category": 2,
+        "rating": 2
+    },
+    {
+        "id": 6,
+        "imageUrl": "https://static.sushiwok.ru/img/4e922d84cf6eed36592ee628ffeb651d/500x500",
+        "title": "Рис с цыпленком",
+        "types": [
+            0,
+            1
+        ],
+        "sizes": [
+            250,
+            350,
+            450
+        ],
+        "price": 470,
+        "category": 1,
+        "rating": 9
+    }
+]
