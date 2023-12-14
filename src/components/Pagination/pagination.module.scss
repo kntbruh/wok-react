@@ -3,7 +3,7 @@
         padding-top: 100px;
 
         .selected {
-            background-color: rgb(7, 59, 42);
+            background-color: #8ee359;
             color: white;
         }
 
@@ -17,13 +17,13 @@
         li {
             padding: 5px;
             list-style: none;
-            border: 1px solid rgb(7, 59, 42);
+            border: 1px solid #8ee359;
             border-radius: 12px;
             width: 25px;
             cursor: pointer;
 
             &:hover {
-                background-color: rgb(7, 59, 42);
+                background-color: #8ee359;
                 color: white;
             }
         }

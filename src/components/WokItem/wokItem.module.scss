@@ -10,7 +10,7 @@
 }
 
 .wok_item_selector {
-    background-color: azure;
+    background-color: #8ee359;
     width: 100%;
     margin: 0 auto;
     border-radius: 12px;
@@ -35,7 +35,7 @@
 }
 
 .active_selector {
-    background-color: rgb(7, 59, 42);
+    background-color: #4b7431;
     color: white;
     border-radius: 12px;
     padding: 2px;
@@ -64,7 +64,7 @@
 
     &:hover {
         cursor: pointer;
-        background-color: red;
+        background-color: #4b7431;
         color: white;
         transition-delay: 0.2s;
 
@@ -75,7 +75,7 @@
 
         i {
             background-color: white;
-            color: red;
+            color: #4b7431;
             transition-delay: 0.2s;
         }
     }
@@ -83,7 +83,7 @@
     i {
         margin-left: 20px;
         padding-right: 2px;
-        background: green;
+        background: #8ee359;
         border-radius: 50%;
         width: 30px;
         height: 30px;
@@ -95,6 +95,6 @@
     span {
         font-size: 20px;
         font-weight: bold;
-        color: green;
+        color: #8ee359;
     }
 }

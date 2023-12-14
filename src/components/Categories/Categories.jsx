@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { changeCategory } from '../../redux/filterSlice'
 
 const Categories = () => {
-    const value = useSelector((state) => state.filter.categoryValueId)
+    const value = useSelector((state) => state.filter.categoryId)
     const dispatch = useDispatch()
 
     const onChangeCategory = (id) => {

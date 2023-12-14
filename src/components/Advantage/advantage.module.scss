@@ -1,0 +1,20 @@
+.adv {
+    padding-top: 20px;
+    text-align: center;
+}
+
+.adv_grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 30px;
+}
+
+.adv_grid_item {
+    width: 400px;
+    height: 150px;
+    border: 1px solid #8ee359;
+    border-radius: 1.5rem;
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2);
+}

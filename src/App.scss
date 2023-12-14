@@ -49,15 +49,16 @@ body {
   width: 150px;
   text-align: center;
   height: 30px;
-  background-color: rgb(217, 204, 204);
-  border-radius: 12px;
-  color: rgb(59, 56, 56);
+  background-color: #8ee359;
+  border-radius: 1.5rem;
+  color: white;
   line-height: 170%;
 }
 
 .categories .active {
-  color: red;
-  background-color: #292727;
+  color: white;
+  font-weight: bold;
+  background-color: #55962c;
 }
 
 .content-items {

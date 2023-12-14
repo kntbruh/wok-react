@@ -1,8 +1,12 @@
-import Search from '../Search/Search'
-import style from './header.module.css'
+import { useSelector } from 'react-redux'
+import style from './header.module.scss'
 import { Link } from 'react-router-dom'
-
+import React from 'react'
 const Header = () => {
+
+    const { totalPrice, items } = useSelector(state => state.cart);
+    const totalCount = items.reduce((sum, item) => sum + item.count, 0)
+
     return (
         <div className={style.header}>
             <Link to='/'>
@@ -13,15 +17,16 @@ const Header = () => {
             <div className={style.header_desc}>
                 <p>Лучший wok только у нас, заказывай</p>
             </div>
-            <Search />
             <div className={style.headerGeo}>
                 <p>Реактивно доставим на адрес:</p>
             </div>
             <div className={style.header_cart}>
-                <div className={style.cart_button}>
-                    <span>385₽</span>
-                    <i>1</i>
-                </div>
+                <Link to='/cart'>
+                    <div className={style.cart_button}>
+                        <span>{totalPrice}₽</span>
+                        <span>{totalCount}</span>
+                    </div>
+                </Link>
             </div>
         </div>
     )

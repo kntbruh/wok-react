@@ -1,24 +1,30 @@
 import React from 'react'
 import style from './wokItem.module.scss'
-// import wokItemPic from '../../assets/wok-item.jpg'
+import { useSelector, useDispatch } from 'react-redux'
+import { addItem } from '../../redux/cartSlice'
 
-const WokItem = ({ title, imageUrl, price, sizes, types }) => {
+const WokItem = ({ id, title, imageUrl, price, sizes, types }) => {
+    //redux logic
+    const dispatch = useDispatch();
+    const { totalPrice, items } = useSelector(state => state.cart)
+    const cartItem = useSelector(state => state.cart.items.find(obj => obj.id === id))
 
+    const addedCount = cartItem ? cartItem.count : 0;
+    // -------------------------------------------
     const type = ['соус терияки', 'спайси соус']
-
     const [active, setActive] = React.useState(0)
-
     const [activePrice, setActivePrice] = React.useState(0)
-    const onClickActive = (index) => {
-        setActive(index)
-    }
-    const onClickActivePrice = (index) => {
-        setActivePrice(index)
-    }
-    const [count, setCount] = React.useState(0)
 
-    const onClickCount = () => {
-        setCount(count + 1)
+    const onClickAdd = () => {
+        const item = {
+            id,
+            title,
+            imageUrl,
+            price,
+            size: sizes[activePrice],
+            type: type[active],
+        }
+        dispatch(addItem(item))
     }
 
     return (
@@ -28,7 +34,7 @@ const WokItem = ({ title, imageUrl, price, sizes, types }) => {
             <div className={style.wok_item_selector}>
                 <ul>
                     {types.map((typeId) => {
-                        return <li key={typeId} onClick={() => onClickActive(typeId)} className={active === typeId ? style.active_selector : ''}>{type[typeId]}</li>
+                        return <li key={typeId} onClick={() => setActive(typeId)} className={active === typeId ? style.active_selector : ''}>{type[typeId]}</li>
                     }
 
                     )}
@@ -36,15 +42,15 @@ const WokItem = ({ title, imageUrl, price, sizes, types }) => {
                 </ul>
                 <ul>
                     {sizes.map((size, index) => {
-                        return <li key={index} onClick={() => onClickActivePrice(index)} className={activePrice === index ? style.active_selector : ''}>{size} гр</li>
+                        return <li key={index} onClick={() => setActivePrice(index)} className={activePrice === index ? style.active_selector : ''}>{size} гр</li>
                     })}
                 </ul>
             </div>
             <div className={style.wok_item_bottom}>
-                <div className={style.wok_item_price}>{price}</div>
-                <div className={style.add_price} onClick={onClickCount}>
+                <div className={style.wok_item_price}>{price}₽</div>
+                <div className={style.add_price} onClick={onClickAdd}>
                     <span>Добавить</span>
-                    <i>{count}</i>
+                    {addedCount > 0 && <i>{addedCount}</i>}
                 </div>
             </div>
         </div>
