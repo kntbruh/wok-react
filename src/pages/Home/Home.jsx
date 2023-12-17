@@ -6,11 +6,10 @@ import React from "react";
 import Search from "../../components/Search/Search";
 import Categories from "../../components/Categories/Categories";
 import Paginate from "../../components/Pagination/Pagination";
-
 import { SearchContext } from "../../App";
 import { useSelector, useDispatch } from "react-redux";
-import axios from "axios";
 import qs from "qs";
+import { Link } from "react-router-dom";
 import Advantage from "../../components/Advantage/Advantage";
 import { useNavigate } from "react-router-dom";
 import { list } from "../../components/Sort/Sort";
@@ -19,6 +18,7 @@ import {
   changePage,
   setFilters,
 } from "../../redux/filterSlice";
+import { fetchWoks } from "../../redux/wokSlice";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -26,27 +26,25 @@ const Home = () => {
   const isSearch = React.useRef(false);
   const isMounted = React.useRef(false);
   const { categoryId, sort, pageValue } = useSelector((state) => state.filter);
+  const { items, status } = useSelector((state) => state.wok);
 
   const { searchValue } = React.useContext(SearchContext);
-  const [items, setItems] = React.useState([]);
-  const [isLoading, setIsLoading] = React.useState(true);
 
-  const fetchWok = () => {
-    setIsLoading(true);
-
+  const getWok = async () => {
     const order = sort.sortProp.includes("-") ? "asc" : "desc";
     const sortBy = sort.sortProp.replace("-", "");
     const category = categoryId > 0 ? `category=${categoryId}` : "";
     const search = searchValue ? `&search=${searchValue}` : "";
 
-    axios
-      .get(
-        `https://655251e85c69a7790329e2f4.mockapi.io/wok-data?page=${pageValue}&limit=3&${category}&sortby=${sortBy}&order=${order}${search}`
-      )
-      .then((response) => {
-        setItems(response.data);
-        setIsLoading(false);
-      });
+    dispatch(
+      fetchWoks({
+        order,
+        sortBy,
+        category,
+        search,
+        pageValue,
+      })
+    );
   };
   //если изменили параметры и был первый рендер:
   React.useEffect(() => {
@@ -78,7 +76,7 @@ const Home = () => {
   //если был первый рендер, то запрашиваем воки
   React.useEffect(() => {
     if (!isSearch.current) {
-      fetchWok();
+      getWok();
     }
     isSearch.current = false;
   }, [categoryId, sort, searchValue, pageValue]);
@@ -90,7 +88,11 @@ const Home = () => {
   const onChangePage = (page) => {
     dispatch(changePage(page));
   };
-  const woks = items.map((obj) => <WokItem key={obj.id} {...obj} />);
+  const woks = items.map((obj) => (
+    <Link key={obj.id} to={`/wok/${obj.id}`}>
+      <WokItem {...obj} />
+    </Link>
+  ));
   const skeleton = [...new Array(6)].map((_, index) => (
     <Skeleton key={index} />
   ));
@@ -107,7 +109,13 @@ const Home = () => {
         </div>
         <h2 className="content-title">Все воки:</h2>
         <Search />
-        <div className="content-items">{isLoading ? skeleton : woks}</div>
+        {status === "error" ? (
+          <div>Воки не прогрузились</div>
+        ) : (
+          <div className="content-items">
+            {status === "loading" ? skeleton : woks}
+          </div>
+        )}
       </div>
       <Paginate pageValue={pageValue} onChangePage={onChangePage} />
       <Advantage />

@@ -1,11 +1,14 @@
 * {
-  font-family: 'Heebo', sans-serif;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: "Heebo", sans-serif;
+  font-family: "Nunito Sans", sans-serif;
 }
 
 body {
   background-color: rgb(255, 255, 255);
-
+}
+a {
+  text-decoration: none;
+  color: black;
 }
 
 .wrapper {
@@ -35,7 +38,8 @@ body {
   justify-content: space-evenly;
 }
 
-.categories {}
+.categories {
+}
 
 .categories ul {
   list-style: none;
