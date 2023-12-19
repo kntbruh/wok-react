@@ -6,7 +6,6 @@ import React from "react";
 import Search from "../../components/Search/Search";
 import Categories from "../../components/Categories/Categories";
 import Paginate from "../../components/Pagination/Pagination";
-import { SearchContext } from "../../App";
 import { useSelector, useDispatch } from "react-redux";
 import qs from "qs";
 import { Link } from "react-router-dom";
@@ -16,19 +15,18 @@ import { list } from "../../components/Sort/Sort";
 import {
   changeCategory,
   changePage,
+  selectSort,
   setFilters,
 } from "../../redux/filterSlice";
-import { fetchWoks } from "../../redux/wokSlice";
+import { fetchWoks, selectWok } from "../../redux/wokSlice";
 
 const Home = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isSearch = React.useRef(false);
   const isMounted = React.useRef(false);
-  const { categoryId, sort, pageValue } = useSelector((state) => state.filter);
-  const { items, status } = useSelector((state) => state.wok);
-
-  const { searchValue } = React.useContext(SearchContext);
+  const { categoryId, sort, pageValue, searchValue } = useSelector(selectSort);
+  const { items, status } = useSelector(selectWok);
 
   const getWok = async () => {
     const order = sort.sortProp.includes("-") ? "asc" : "desc";

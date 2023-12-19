@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const fetchWoks = createAsyncThunk(
   "wok/fetchWokStatus",
-  async (params) => {
+  async (params, thunkApi) => {
     const { order, sortBy, category, search, pageValue } = params;
     const { data } = await axios.get(
       `https://655251e85c69a7790329e2f4.mockapi.io/wok-data?page=${pageValue}&limit=3&${category}&sortby=${sortBy}&order=${order}${search}`
@@ -41,6 +41,8 @@ export const wokSlice = createSlice({
       });
   },
 });
+
+export const selectWok = (state) => state.wok;
 
 export const { setItems } = wokSlice.actions;
 

@@ -3,9 +3,10 @@ import style from "./header.module.scss";
 import { Link } from "react-router-dom";
 import React from "react";
 import { useLocation } from "react-router-dom";
+import { selectCart } from "../../redux/cartSlice";
 const Header = () => {
   const location = useLocation();
-  const { totalPrice, items } = useSelector((state) => state.cart);
+  const { totalPrice, items } = useSelector(selectCart);
   const totalCount = items.reduce((sum, item) => sum + item.count, 0);
 
   return (

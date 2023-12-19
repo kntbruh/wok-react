@@ -10,19 +10,15 @@ import FullWok from "./pages/FullWok";
 
 export const SearchContext = React.createContext();
 function App() {
-  const [searchValue, setSearchValue] = React.useState("");
-
   return (
-    <SearchContext.Provider value={{ searchValue, setSearchValue }}>
-      <Routes>
-        <Route path="/" element={<OutletLayout />}>
-          <Route path="" element={<Home />} />
-          <Route path="*" element={<NotFound />} />
-          <Route path="wok/:id" element={<FullWok />} />
-          <Route path="cart" element={<Cart />} />
-        </Route>
-      </Routes>
-    </SearchContext.Provider>
+    <Routes>
+      <Route path="/" element={<OutletLayout />}>
+        <Route path="" element={<Home />} />
+        <Route path="*" element={<NotFound />} />
+        <Route path="wok/:id" element={<FullWok />} />
+        <Route path="cart" element={<Cart />} />
+      </Route>
+    </Routes>
   );
 }
 
