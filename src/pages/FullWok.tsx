@@ -2,9 +2,13 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
-const FullWok = () => {
+const FullWok: React.FC = () => {
   const { id } = useParams();
-  const [wok, setWok] = React.useState();
+  const [wok, setWok] = React.useState<{
+    imageUrl: string;
+    title: string;
+    price: number;
+  }>();
 
   React.useEffect(() => {
     async function fetchWok() {
@@ -20,7 +24,7 @@ const FullWok = () => {
     fetchWok();
   }, []);
   if (!wok) {
-    return "Loading, please wait..";
+    return <>Loading, please wait..</>;
   }
   return (
     <div>

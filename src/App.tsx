@@ -8,7 +8,7 @@ import Cart from "./pages/Cart/Cart";
 import OutletLayout from "./components/LayoutOutlet/OutletLayout";
 import FullWok from "./pages/FullWok";
 
-export const SearchContext = React.createContext();
+// export const SearchContext = React.createContext();
 function App() {
   return (
     <Routes>
