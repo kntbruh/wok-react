@@ -1,6 +1,12 @@
 import { useSelector, useDispatch } from "react-redux";
+import React from "react";
 
-const Categories = ({ value, onChangeCategory }) => {
+type CategoriesProp = {
+  value: number;
+  onChangeCategory: any;
+};
+
+const Categories: React.FC<CategoriesProp> = ({ value, onChangeCategory }) => {
   const categories = ["Все", "Мини", "Рис", "Морепродукты"];
 
   return (

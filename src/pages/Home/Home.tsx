@@ -20,7 +20,7 @@ import {
 } from "../../redux/filterSlice";
 import { fetchWoks, selectWok } from "../../redux/wokSlice";
 
-const Home = () => {
+const Home: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isSearch = React.useRef(false);
@@ -35,6 +35,7 @@ const Home = () => {
     const search = searchValue ? `&search=${searchValue}` : "";
 
     dispatch(
+      //@ts-ignore
       fetchWoks({
         order,
         sortBy,
@@ -79,14 +80,14 @@ const Home = () => {
     isSearch.current = false;
   }, [categoryId, sort, searchValue, pageValue]);
 
-  const onChangeCategory = React.useCallback((idx) => {
+  const onChangeCategory = React.useCallback((idx: number) => {
     dispatch(changeCategory(idx));
   }, []);
 
-  const onChangePage = (page) => {
+  const onChangePage = (page: number) => {
     dispatch(changePage(page));
   };
-  const woks = items.map((obj) => (
+  const woks = items.map((obj: any) => (
     <Link key={obj.id} to={`/wok/${obj.id}`}>
       <WokItem {...obj} />
     </Link>

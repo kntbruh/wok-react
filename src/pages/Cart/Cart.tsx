@@ -3,13 +3,17 @@ import style from "./cart.module.scss";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { clearItems, selectCart } from "../../redux/cartSlice";
+import React from "react";
 
-const Cart = () => {
+const Cart: React.FC = () => {
   //redux logic
   const dispatch = useDispatch();
   const { totalPrice, items } = useSelector(selectCart);
-  const itemsCart = useSelector((state) => state.cart.items);
-  const totalCount = items.reduce((sum, item) => sum + item.count, 0);
+  // const itemsCart = useSelector((state) => state.cart.items);
+  const totalCount = items.reduce(
+    (sum: number, item: any) => sum + item.count,
+    0
+  );
   // -------------------------------------------
   const clearCart = () => {
     dispatch(clearItems());
@@ -46,7 +50,7 @@ const Cart = () => {
           <span>Очистить корзину</span>
         </div>
       </div>
-      {itemsCart.map((item) => (
+      {items.map((item: any) => (
         <CartItem key={item.id} {...item} />
       ))}
       <div className={style.cart_footer}>

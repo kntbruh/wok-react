@@ -3,25 +3,30 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { changeSort, selectSort } from "../../redux/filterSlice";
 
-export const list = [
+type listType = {
+  name: string;
+  sortProp: string;
+};
+
+export const list: listType[] = [
   { name: "популярности", sortProp: "rating" },
   { name: "цене", sortProp: "price" },
   { name: "алфавиту", sortProp: "-title" },
 ];
 
-const Sort = () => {
+const Sort: React.FC = () => {
   const [open, setOpen] = React.useState(false);
   const { sort } = useSelector(selectSort);
   const dispatch = useDispatch();
-  const sortRef = React.useRef();
+  const sortRef = React.useRef<HTMLDivElement>(null);
 
-  const onClickSort = (index) => {
+  const onClickSort = (index: listType) => {
     dispatch(changeSort(index));
     setOpen(false);
   };
 
   React.useEffect(() => {
-    const onClickOutside = (event) => {
+    const onClickOutside = (event: any) => {
       if (!event.composedPath().includes(sortRef.current)) {
         setOpen(false);
       }

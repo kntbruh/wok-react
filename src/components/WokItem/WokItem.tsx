@@ -3,10 +3,25 @@ import style from "./wokItem.module.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { addItem, selectCartItemById } from "../../redux/cartSlice";
 
-const WokItem = ({ id, title, imageUrl, price, sizes, types }) => {
+type WokItemProp = {
+  id: string;
+  title: string;
+  imageUrl: string;
+  price: number;
+  sizes: number[];
+  types: number[];
+};
+
+const WokItem: React.FC<WokItemProp> = ({
+  id,
+  title,
+  imageUrl,
+  price,
+  sizes,
+  types,
+}) => {
   //redux logic
   const dispatch = useDispatch();
-  const { totalPrice, items } = useSelector((state) => state.cart);
   const cartItem = useSelector(selectCartItemById(id));
 
   const addedCount = cartItem ? cartItem.count : 0;
