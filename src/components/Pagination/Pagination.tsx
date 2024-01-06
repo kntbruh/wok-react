@@ -4,7 +4,7 @@ import React from "react";
 
 type PaginateProp = {
   pageValue: number;
-  onChangePage: any;
+  onChangePage: (e: number) => void;
 };
 
 const Paginate: React.FC<PaginateProp> = ({ pageValue, onChangePage }) => {
