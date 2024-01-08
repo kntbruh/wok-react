@@ -2,6 +2,7 @@ import React from "react";
 import style from "./wokItem.module.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { addItem, selectCartItemById } from "../../redux/cartSlice";
+import { Link } from "react-router-dom";
 
 type WokItemProp = {
   id: string;
@@ -38,14 +39,17 @@ const WokItem: React.FC<WokItemProp> = ({
       price,
       size: sizes[activePrice],
       type: type[active],
+      count: 0,
     };
     dispatch(addItem(item));
   };
 
   return (
     <div className={style.wok_item}>
-      <img className={style.wok_item_image} src={imageUrl} alt="" />
-      <h2 className={style.wok_item_name}>{title} </h2>
+      <Link key={id} to={`/wok/${id}`}>
+        <img className={style.wok_item_image} src={imageUrl} alt="" />
+        <h2 className={style.wok_item_name}>{title} </h2>
+      </Link>
       <div className={style.wok_item_selector}>
         <ul>
           {types.map((typeId) => {

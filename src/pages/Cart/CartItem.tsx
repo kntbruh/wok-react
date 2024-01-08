@@ -4,7 +4,7 @@ import { addItem, minusItem, removeItem } from "../../redux/cartSlice";
 import React from "react";
 
 type CartItemProp = {
-  id: number;
+  id: string;
   title: string;
   type: string;
   size: number;
@@ -25,11 +25,7 @@ const CartItem: React.FC<CartItemProp> = ({
   const dispatch = useDispatch();
 
   const plusProduct = () => {
-    dispatch(
-      addItem({
-        id,
-      })
-    );
+    dispatch(addItem({ id }));
   };
   const minusProduct = () => {
     dispatch(minusItem({ id }));

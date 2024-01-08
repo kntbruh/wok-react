@@ -19,10 +19,11 @@ import {
   setFilters,
 } from "../../redux/filterSlice";
 import { fetchWoks, selectWok } from "../../redux/wokSlice";
+import { useAppDispatch } from "../../redux/store";
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const isSearch = React.useRef(false);
   const isMounted = React.useRef(false);
   const { categoryId, sort, pageValue, searchValue } = useSelector(selectSort);
@@ -35,13 +36,12 @@ const Home: React.FC = () => {
     const search = searchValue ? `&search=${searchValue}` : "";
 
     dispatch(
-      //@ts-ignore
       fetchWoks({
         order,
         sortBy,
         category,
         search,
-        pageValue,
+        pageValue: String(pageValue),
       })
     );
   };
@@ -87,11 +87,7 @@ const Home: React.FC = () => {
   const onChangePage = (page: number) => {
     dispatch(changePage(page));
   };
-  const woks = items.map((obj: any) => (
-    <Link key={obj.id} to={`/wok/${obj.id}`}>
-      <WokItem {...obj} />
-    </Link>
-  ));
+  const woks = items.map((obj: any) => <WokItem {...obj} />);
   const skeleton = [...new Array(6)].map((_, index) => (
     <Skeleton key={index} />
   ));

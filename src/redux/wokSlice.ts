@@ -1,20 +1,39 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { RootState } from "./store";
 
-export const fetchWoks = createAsyncThunk(
+type Wok = {
+  id: string;
+  title: string;
+  imageUrl: string;
+  price: number;
+  sizes: number[];
+  types: number[];
+};
+
+export const fetchWoks = createAsyncThunk<Wok[], Record<string, string>>(
   "wok/fetchWokStatus",
-  async (params, thunkApi) => {
+  async (params) => {
     const { order, sortBy, category, search, pageValue } = params;
-    const { data } = await axios.get(
+    const { data } = await axios.get<Wok[]>(
       `https://655251e85c69a7790329e2f4.mockapi.io/wok-data?page=${pageValue}&limit=3&${category}&sortby=${sortBy}&order=${order}${search}`
     );
     return data;
   }
 );
+export enum Status {
+  LOADING = "loading",
+  SUCCESS = "success",
+  ERROR = "error",
+}
 
-const initialState = {
+interface WokSliceState {
+  items: Wok[];
+  status: Status;
+}
+const initialState: WokSliceState = {
   items: [],
-  status: "pending",
+  status: Status.LOADING,
 };
 
 export const wokSlice = createSlice({
@@ -28,21 +47,21 @@ export const wokSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchWoks.pending, (state) => {
-        state.status = "loading";
+        state.status = Status.LOADING;
         state.items = [];
       })
       .addCase(fetchWoks.fulfilled, (state, action) => {
         state.items = action.payload;
-        state.status = "success";
+        state.status = Status.SUCCESS;
       })
       .addCase(fetchWoks.rejected, (state) => {
-        state.status = "error";
+        state.status = Status.ERROR;
         state.items = [];
       });
   },
 });
 
-export const selectWok = (state) => state.wok;
+export const selectWok = (state: RootState) => state.wok;
 
 export const { setItems } = wokSlice.actions;
 
