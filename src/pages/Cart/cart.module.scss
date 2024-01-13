@@ -43,6 +43,7 @@
 
     span {
       font-size: 16px;
+      cursor: pointer;
     }
   }
 }
@@ -97,7 +98,7 @@
 }
 .cart__button {
   border-radius: 50px;
-  border-color: #7be23b;
+  border-color: green;
   background-color: transparent;
   &:hover {
     background-color: #7be23b;

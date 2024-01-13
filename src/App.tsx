@@ -1,24 +1,30 @@
 import "./App.scss";
-import Header from "./components/Header/Header";
 import Home from "./pages/Home/Home";
 import { Route, Routes } from "react-router-dom";
-import NotFound from "./pages/NotFound/NotFound";
-import React from "react";
-import Cart from "./pages/Cart/Cart";
+import React, { Suspense } from "react";
 import OutletLayout from "./components/LayoutOutlet/OutletLayout";
-import FullWok from "./pages/FullWok";
 
-// export const SearchContext = React.createContext();
+const Cart = React.lazy(
+  () => import(/*webpackChunkName:"Cart"*/ "./pages/Cart/Cart")
+);
+const FullWok = React.lazy(
+  () => import(/*webpackChunkName:"FullWok"*/ "./pages/FullWok")
+);
+const NotFound = React.lazy(
+  () => import(/*webpackChunkName:"NotFound"*/ "./pages/NotFound/NotFound")
+);
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<OutletLayout />}>
-        <Route path="" element={<Home />} />
-        <Route path="*" element={<NotFound />} />
-        <Route path="wok/:id" element={<FullWok />} />
-        <Route path="cart" element={<Cart />} />
-      </Route>
-    </Routes>
+    <Suspense fallback={"Loading..."}>
+      <Routes>
+        <Route path="/" element={<OutletLayout />}>
+          <Route path="" element={<Home />} />
+          <Route path="*" element={<NotFound />} />
+          <Route path="wok/:id" element={<FullWok />} />
+          <Route path="cart" element={<Cart />} />
+        </Route>
+      </Routes>
+    </Suspense>
   );
 }
 

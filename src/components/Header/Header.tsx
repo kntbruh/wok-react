@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import React from "react";
 import { useLocation } from "react-router-dom";
 import { selectCart } from "../../redux/cartSlice";
+import icon from "../../assets/icon.png";
 
 const Header: React.FC = () => {
   const location = useLocation();
@@ -26,14 +27,12 @@ const Header: React.FC = () => {
     <div className={style.header}>
       <Link to="/">
         <div className={style.header_logo}>
+          <img src={icon} />
           <h2>WokReact</h2>
         </div>
       </Link>
       <div className={style.header_desc}>
         <p>Лучший wok только у нас, заказывай</p>
-      </div>
-      <div className={style.headerGeo}>
-        <p>Реактивно доставим на адрес:</p>
       </div>
       <div className={style.header_cart}>
         {location.pathname !== "/cart" && (

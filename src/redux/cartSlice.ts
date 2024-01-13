@@ -1,4 +1,3 @@
-import { calcTotalPrice } from "./../@utils/calcTotalPrice";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "./store";
 import { calcTotalPrice } from "../@utils/calcTotalPrice";

@@ -1,25 +1,25 @@
 .root {
-    position: relative;
+  position: relative;
 }
 
 .input {
-    width: 200px;
-    border-radius: 1.5rem;
-    padding: 15px;
-    outline: none;
-    border-color: #8ee359;
-    font-size: 15px;
+  width: 200px;
+  border-radius: 1.5rem;
+  padding: 15px;
+  outline: none;
+  border-color: green;
+  font-size: 17px;
 }
 
 .icon {
-    width: 30px;
-    position: absolute;
-    right: 15px;
-    top: -40px;
-    cursor: pointer;
-    opacity: 0.2;
+  width: 30px;
+  position: absolute;
+  right: 15px;
+  top: -40px;
+  cursor: pointer;
+  opacity: 0.2;
 
-    &:hover {
-        opacity: 0.8;
-    }
+  &:hover {
+    opacity: 0.8;
+  }
 }
