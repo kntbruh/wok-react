@@ -1,6 +1,6 @@
 import "./App.scss";
 import Home from "./pages/Home/Home";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, BrowserRouter } from "react-router-dom";
 import React, { Suspense } from "react";
 import OutletLayout from "./components/LayoutOutlet/OutletLayout";
 
@@ -13,17 +13,17 @@ const FullWok = React.lazy(
 const NotFound = React.lazy(
   () => import(/*webpackChunkName:"NotFound"*/ "./pages/NotFound/NotFound")
 );
+
 function App() {
   return (
     <Suspense fallback={"Loading..."}>
-      <Routes>
-        <Route path="/" element={<OutletLayout />}>
-          <Route path="" element={<Home />} />
-          <Route path="*" element={<NotFound />} />
-          <Route path="wok/:id" element={<FullWok />} />
-          <Route path="cart" element={<Cart />} />
-        </Route>
-      </Routes>
+      <BrowserRouter basename="/wok-react">
+        <Route path="/" element={<OutletLayout />} />
+        <Route path="" element={<Home />} />
+        <Route path="*" element={<NotFound />} />
+        <Route path="wok/:id" element={<FullWok />} />
+        <Route path="cart" element={<Cart />} />
+      </BrowserRouter>
     </Suspense>
   );
 }
