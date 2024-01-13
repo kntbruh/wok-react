@@ -1,1 +1,0 @@
-import{j as s}from"./index-e815b6ba.js";const e="_nf_xycy4_1",n={nf:e},c=()=>s.jsxs("div",{className:n.nf,children:[s.jsx("h1",{className:n.nf_H1,children:"Ничего не найдено"}),s.jsx("span",{children:"🤔"}),s.jsx("p",{children:"К сожалению, данной страницы нет в нашем интернет-магазине"})]});export{c as default};
